@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Simulador | Crecimiento poblacional</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+</head>
+<body>
+    <main class="">
+        <div class="jumbotron m-0 bg-white">
+            <h1>Proyecto: Simulación de crecimiento poblacional</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta officia beatae odio, maiores accusamus doloribus.</p>
+            <form class="">
+                <div class="form-row">
+                    <div class="col-6 col-md-3 col-lg-2">
+                        <div class="form-group">
+                            <label for="txt-pi">Población inicial</label>
+                            <input type="number" class="form-control" id="txt-pi" placeholder="" value="" required="">
+                            <div class="invalid-feedback">Campo vacío o dato inválido.</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-2">
+                        <div class="form-group">
+                            <label for="txt-an">Años a proyectar</label>
+                            <input type="number" class="form-control" id="txt-an" placeholder="" value="" required="">
+                            <div class="invalid-feedback">Campo vacío o dato inválido.</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-2">
+                        <div class="form-group">
+                            <label for="txt-tn">Tasa de natalidad</label>
+                            <input type="number" class="form-control" id="txt-tn" placeholder="" value="" required="">
+                            <div class="invalid-feedback">Campo vacío o dato inválido.</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-2">
+                        <div class="form-group">
+                            <label for="txt-tm">Tasa de mortalidad</label>
+                            <input type="number" class="form-control" id="txt-tm" value="" required="">
+                            <div class="invalid-feedback">Campo vacío o dato inválido.</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-2">
+                        <div class="form-group">
+                            <label for="txt-em">Tasa de emigración</label>
+                            <input type="number" class="form-control" id="txt-em" value="" required="">
+                            <div class="invalid-feedback">Campo vacío o dato inválido.</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 col-lg-2">
+                        <div class="form-group">
+                            <label for="txt-in">Tasa de inmigración</label>
+                            <input type="number" class="form-control" id="txt-in" value="" required="">
+                            <div class="invalid-feedback">Campo vacío o dato inválido.</div>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button class="btn btn-primary btn-scp" type="button">Enviar datos</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="jumbotron pt-2 bg-white">
+            <h4>Resultados</h4>
+            <div id="chartdiv">Hola mundo</div>
+        </div>
+    </main>
+    <!-- Bootstrap & jQuery -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- amCharts -->
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/material.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <!-- Custom Javascript -->
+    <script src="js/main.js"></script>
+    <script src="js/charts.js"></script>
+</body>
+</html>
