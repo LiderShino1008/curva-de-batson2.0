@@ -19,28 +19,28 @@
                 <div class="col-6 col-md-3">
                     <div class="card card-body form-group shadow-sm">
                         <label for="txt-pi" class="small">Población inicial</label>
-                        <input type="number" class="form-control" id="txt-pi" placeholder="" value="" required="">
+                        <input type="number" class="form-control" id="txt-pi" placeholder="" value="" required="" min="0">
                         <div class="invalid-feedback">Campo vacío o dato inválido.</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="card card-body form-group shadow-sm">
                         <label for="txt-an" class="small">Años a proyectar</label>
-                        <input type="number" class="form-control" id="txt-an" placeholder="" value="" required="">
+                        <input type="number" class="form-control" id="txt-an" placeholder="" value="" required="" min="0">
                         <div class="invalid-feedback">Campo vacío o dato inválido.</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="card card-body form-group shadow-sm">
                         <label for="txt-tn" class="small">Tasa natalidad</label>
-                        <input type="number" class="form-control" id="txt-tn" placeholder="" value="" required="">
+                        <input type="number" class="form-control" id="txt-tn" placeholder="" value="" required="" min="0">
                         <div class="invalid-feedback">Campo vacío o dato inválido.</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="card card-body form-group shadow-sm">
                         <label for="txt-tm" class="small">Tasa mortalidad</label>
-                        <input type="number" class="form-control" id="txt-tm" value="" required="">
+                        <input type="number" class="form-control" id="txt-tm" value="" required="" min="0">
                         <div class="invalid-feedback">Campo vacío o dato inválido.</div>
                     </div>
                 </div>
@@ -53,22 +53,22 @@
                                 <div class="col-6 col-md-12 col-xl-6">
                                     <div class="card card-body form-group shadow-sm">
                                         <label for="txt-em" class="small">Tasa de emigración</label>
-                                        <input type="number" class="form-control" id="txt-em" value="" required="">
+                                        <input type="number" class="form-control" id="txt-em" value="" required="" min="0">
                                         <div class="invalid-feedback">Campo vacío o dato inválido.</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-12 col-xl-6">
                                     <div class="card card-body form-group shadow-sm">
                                         <label for="txt-in" class="small">Tasa de inmigración</label>
-                                        <input type="number" class="form-control" id="txt-in" value="" required="">
+                                        <input type="number" class="form-control" id="txt-in" value="" required="" min="0">
                                         <div class="invalid-feedback">Campo vacío o dato inválido.</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-12 col-xl-6 text-center">
-                                    <button class="btn btn-primary btn-scp" type="button">Iniciar</button>
+                                    <button class="btn btn-primary btn-scp" type="button" onclick="calcularCP()">Iniciar</button>
                                 </div>
                                 <div class="col-6 col-md-12 col-xl-6 text-center mt-0 mt-md-3 mt-xl-0">
-                                    <button class="btn btn-primary btn-scp" type="button">Restablecer</button>
+                                    <button class="btn btn-primary btn-scp" type="button" onclick="reset()">Restablecer</button>
                                 </div>
                             </div>
                         </div>
