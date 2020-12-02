@@ -1,0 +1,206 @@
+/* mixin */
+@mixin box-shadow-image() {
+	box-shadow: 2px 2px 6px 0 rgba(black,.10);
+}
+
+
+
+/*  General class */
+.main{
+    width: 100%;
+    height: 100%;
+    background-color: $blue-light-basic;
+    margin: 0;
+}
+
+.main__content{
+    width: 90%;
+    margin: auto;
+    .header{
+        width: 100%;
+        text-align: center;
+        border-bottom: 2px solid $grey-light;
+        h4{
+            font-family: $font-core;
+        }
+    }
+    .section_1{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        column-gap:$spacer-m;
+        grid-template-rows: 1fr;
+        margin:$spacer-l 0;
+    }
+    .section_2{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        column-gap:$spacer-m;
+        .section_2_1{
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows:1fr 2fr ;
+            gap:$spacer-m;
+            .section_2_1_1{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                column-gap: $spacer-m;
+                grid-template-rows:1fr ;
+                row-gap:$spacer-m;
+            }
+        }
+    }
+}
+
+.card__{
+    background-color: white;
+    border-radius: $spacer-xs;
+    @include box-shadow-image()
+}
+
+.card1{
+    padding: $spacer-s;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:1fr;
+    &__section1{
+        display: flex;
+        flex-direction: column;
+        label{
+            font-family: $font-core;
+            font-size: $text-xs;
+            font-weight: bold;
+        }
+        input{
+            height: $spacer-xl;
+            border: 0;
+            border-bottom: 2px solid $grey-dark-2;
+            padding: 0;
+            font-size: $text-xxl;
+            width: $spacer-xxl +$spacer-l;
+            font-weight: bold;
+            &:hover{
+                outline: 0;
+                border-bottom: 2px solid $grey-dark-2;
+            }
+            &:active{
+                outline: 0;
+                border-bottom: 2px solid $grey-dark-2;
+            }
+        }
+    }
+    &__section2{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: $spacer-xs;
+        i{
+            font-size: $text-xxl + $text-xxs;
+            color: $grey-dark-2;
+        }
+    }
+}
+
+.card1__green{
+    border-left: $spacer-xxs solid $green-light;
+}
+
+.card1__rose{
+    border-left: $spacer-xxs solid $rose;
+}
+
+
+.card1__blue{
+    border-left: $spacer-xxs solid $blue-normal;
+}
+
+
+.card1__yellow{
+    border-left: $spacer-xxs solid $yellow-intense;
+}
+
+
+.card2{
+    padding: $spacer-s;
+    text-align: center;
+    label{
+        font-size: $text-xs ;
+        margin-bottom: $spacer-m;
+        font-family: $font-core;
+        font-weight: bold;
+    }
+    input{
+        margin-top: $spacer-s;
+        height: $spacer-l;
+        border: 0;
+        border-bottom: 2px solid white;
+        padding: 0;
+        font-size: $text-xxl + $text-xxs;
+        width: $spacer-xxl +$spacer-s;
+        font-weight: bold;
+        background-color: transparent;
+        //color: white;
+        &:hover{
+            outline: 0;
+            border-bottom: 2px solid white;
+        }
+        &:active{
+            outline: 0;
+            border-bottom: 2px solid white;
+        }
+    }
+}
+
+.card__green{
+    background-color:$green-light;
+    
+}
+
+.card__rose{
+    background-color:$rose;
+}
+
+.button__main{
+    width: 100%;
+    background-color: white;
+    border-radius: $spacer-xxs;
+    padding: $spacer-s;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    border: 0;
+    @include box-shadow-image()
+}
+
+.button__green{
+    background-color:$green-light;
+}
+
+.button__rose{
+    background-color:$rose;
+}
+
+.card__graphic{
+    padding: $spacer-s;
+    .card__header{
+        border-bottom: 2px solid $grey-light;
+        padding: $spacer-xs 0;
+        label{
+            font-family: $font-core;
+            font-size: $text-xs;
+            font-weight: bold;
+        }
+    }
+    .graphic1__container{
+        height: $spacer-xxl + $spacer-xxl +$spacer-xl + $spacer-xs ;
+    }
+}
+
+.card__graphic2__container{
+    grid-column-start:2;
+    grid-column-end:6;
+    .card_graphic2{
+        .card__body{
+            height: $heading-xxl * 5 + $heading-xl;
+        }
+    }
+}

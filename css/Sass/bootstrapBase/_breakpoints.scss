@@ -1,0 +1,54 @@
+
+/* Media Queries Mixin
+**********************/
+
+@mixin media ($breakpoint) {  
+
+  @if $breakpoint == tablet { 
+    @media only screen and (min-width: 768px) { @content; }  
+  } 
+  @else if $breakpoint == tablet-only { //** new
+    @media only screen and (min-width: 501px) and (max-width:768px) { @content; }   
+  } 
+  @else if $breakpoint == desktop-s{  // ** new
+    @media only screen and (min-width: 992px) { @content; }  
+  }
+  @else if $breakpoint == desktop-m {  
+    @media only screen and (min-width: 1200px) { @content; }  
+  } 
+  
+  @else if $breakpoint == desktop-l {  
+    @media only screen and (min-width: 1440px) { @content; }  
+  } 
+  
+  @else if $breakpoint == desktop-xl {  
+    @media only screen and (min-width: 1780px) { @content; }  
+  } 
+
+  @else if $breakpoint == mobile-only {  //
+    @media only screen and (max-width: 767px) { @content; }  
+  }
+  
+  @else if $breakpoint == tablet-p-only {  
+    @media only screen and (min-width: 768px) and (max-width: 992px) and (orientation : portrait) { @content; }  
+  }  
+  
+  @else if $breakpoint == tablet-l-only {  
+    @media only screen and (min-width: 768px) and (max-width: 992px) and (orientation : landscape) { @content; }  
+  } 
+  
+  @else if $breakpoint == desktop-s-only {  //
+    @media only screen and (min-width: 769px) and (max-width: 1199px) { @content; }  
+  } 
+  @else if $breakpoint == desktop-s-only-2 {  //new
+    @media only screen and (min-width: 768px) and (max-width: 1199px) { @content; }  
+  }
+  
+  @else if $breakpoint == desktop-m-only {  
+    @media only screen and (min-width: 1200px) and (max-width: 1480px) { @content; }  
+  }
+
+  @else if $breakpoint == mobile-min { //** new
+    @media only screen and (max-width: 500px) { @content; }   
+  } 
+} 
