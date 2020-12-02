@@ -30,7 +30,7 @@
   }
   
   @else if $breakpoint == tablet-p-only {  
-    @media only screen and (min-width: 768px) and (max-width: 992px) and (orientation : portrait) { @content; }  
+    @media only screen and (min-width: 768px) and (max-width: 991px) and (orientation : portrait) { @content; }  
   }  
   
   @else if $breakpoint == tablet-l-only {  

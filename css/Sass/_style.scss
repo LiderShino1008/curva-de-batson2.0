@@ -26,26 +26,57 @@
     }
     .section_1{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        column-gap:$spacer-m;
+        grid-template-columns: 1fr;
+        row-gap: $spacer-s;
+        column-gap:$spacer-s;
         grid-template-rows: 1fr;
-        margin:$spacer-l 0;
+        margin:$spacer-m  0 $spacer-s 0;
+        @include media(desktop-s){
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        @include media(desktop-m){
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        @include media(desktop-s-only ){
+            grid-template-columns: 1fr 1fr;
+        }
     }
     .section_2{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        column-gap:$spacer-m;
+        grid-template-columns: 1fr;
+        row-gap: $spacer-s;
+        @include media(desktop-m){
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        column-gap:$spacer-s;
         .section_2_1{
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows:1fr 2fr ;
-            gap:$spacer-m;
+            display: flex;
+            flex-direction: column;
+            
+            @include media(tablet){
+              flex-direction: row;
+            }
+            @include media(desktop-s){
+                flex-direction: row;
+            }
+            @include media(desktop-m){
+                flex-direction: column;
+                
+            }
+            gap:$spacer-s;
             .section_2_1_1{
                 display: grid;
-                grid-template-columns: 1fr 1fr;
-                column-gap: $spacer-m;
-                grid-template-rows:1fr ;
-                row-gap:$spacer-m;
+                grid-template-columns: 1fr 1fr ;
+                column-gap: $spacer-s;
+                
+                row-gap:$spacer-s;
+                
+                @include media(tablet){
+                    grid-template-columns: 1fr ;
+                }
+                @include media(desktop-m){
+                    grid-template-columns: 1fr 1fr;
+                }
             }
         }
     }
@@ -59,9 +90,11 @@
 
 .card1{
     padding: $spacer-s;
+    padding-bottom: $spacer-xxs ;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows:1fr;
+   
     &__section1{
         display: flex;
         flex-direction: column;
@@ -87,12 +120,16 @@
                 border-bottom: 2px solid $grey-dark-2;
             }
         }
+        span{
+            height: $spacer-m;
+        }
     }
     &__section2{
         display: flex;
-        justify-content: flex-end;
+        justify-content: flex-end; 
         align-items: center;
         padding: $spacer-xs;
+        height: auto;
         i{
             font-size: $text-xxl + $text-xxs;
             color: $grey-dark-2;
@@ -121,6 +158,7 @@
 
 .card2{
     padding: $spacer-s;
+    padding-bottom: $spacer-xs;
     text-align: center;
     label{
         font-size: $text-xs ;
@@ -148,6 +186,10 @@
             border-bottom: 2px solid white;
         }
     }
+    span{
+        height: $spacer-m;
+    }
+    
 }
 
 .card__green{
@@ -181,6 +223,13 @@
 
 .card__graphic{
     padding: $spacer-s;
+    height: auto;
+    @include media(desktop-s){
+        width: 100%;
+    }
+    @include media(desktop-m){
+        width: auto;
+    }
     .card__header{
         border-bottom: 2px solid $grey-light;
         padding: $spacer-xs 0;
@@ -191,16 +240,39 @@
         }
     }
     .graphic1__container{
-        height: $spacer-xxl + $spacer-xxl +$spacer-xl + $spacer-xs ;
+        height: $spacer-xxl + $spacer-xxl +$spacer-xl + $spacer-xs * 13;
+        @include media(desktop-s){
+            height: $spacer-xxl + $spacer-xxl +$spacer-xl + $spacer-xs * 10;
+        }
+        @include media(desktop-m){
+            height: $spacer-xxl + $spacer-xxl +$spacer-xl + $spacer-xs;
+        }
+        
+        
     }
 }
 
 .card__graphic2__container{
-    grid-column-start:2;
-    grid-column-end:6;
+
+    @include media(desktop-s){
+        grid-template-columns: 1fr;
+    }
+    @include media(desktop-m){
+        grid-column-start:2;
+        grid-column-end:5;
+    }
     .card_graphic2{
         .card__body{
-            height: $heading-xxl * 5 + $heading-xl;
+            height: $heading-xxl * 5 + $heading-m;
+            #chartdiv{
+                margin-top: $spacer-s;
+                height: 100%;
+            }
         }
     }
+}
+
+.chartdiv{
+    margin-top: $spacer-s;
+    height: 100%;
 }
