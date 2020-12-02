@@ -12,63 +12,89 @@
 </head>
 <body>
     <main class="">
-        <div class="jumbotron m-0 bg-white">
+        <div class="jumbotron pb-4 bg-white">
             <h1>Proyecto: Simulación de crecimiento poblacional</h1>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta officia beatae odio, maiores accusamus doloribus.</p>
-            <form class="">
-                <div class="form-row">
-                    <div class="col-6 col-md-3 col-lg-2">
-                        <div class="form-group">
-                            <label for="txt-pi">Población inicial</label>
-                            <input type="number" class="form-control" id="txt-pi" placeholder="" value="" required="">
-                            <div class="invalid-feedback">Campo vacío o dato inválido.</div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-lg-2">
-                        <div class="form-group">
-                            <label for="txt-an">Años a proyectar</label>
-                            <input type="number" class="form-control" id="txt-an" placeholder="" value="" required="">
-                            <div class="invalid-feedback">Campo vacío o dato inválido.</div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-lg-2">
-                        <div class="form-group">
-                            <label for="txt-tn">Tasa de natalidad</label>
-                            <input type="number" class="form-control" id="txt-tn" placeholder="" value="" required="">
-                            <div class="invalid-feedback">Campo vacío o dato inválido.</div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-lg-2">
-                        <div class="form-group">
-                            <label for="txt-tm">Tasa de mortalidad</label>
-                            <input type="number" class="form-control" id="txt-tm" value="" required="">
-                            <div class="invalid-feedback">Campo vacío o dato inválido.</div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-lg-2">
-                        <div class="form-group">
-                            <label for="txt-em">Tasa de emigración</label>
-                            <input type="number" class="form-control" id="txt-em" value="" required="">
-                            <div class="invalid-feedback">Campo vacío o dato inválido.</div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3 col-lg-2">
-                        <div class="form-group">
-                            <label for="txt-in">Tasa de inmigración</label>
-                            <input type="number" class="form-control" id="txt-in" value="" required="">
-                            <div class="invalid-feedback">Campo vacío o dato inválido.</div>
-                        </div>
-                    </div>
-                    <div class="col-12 text-center">
-                        <button class="btn btn-primary btn-scp" type="button">Enviar datos</button>
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <div class="card card-body form-group shadow-sm">
+                        <label for="txt-pi" class="small">Población inicial</label>
+                        <input type="number" class="form-control" id="txt-pi" placeholder="" value="" required="" min="0">
+                        <div class="invalid-feedback">Campo vacío o dato inválido.</div>
                     </div>
                 </div>
-            </form>
+                <div class="col-6 col-md-3">
+                    <div class="card card-body form-group shadow-sm">
+                        <label for="txt-an" class="small">Años a proyectar</label>
+                        <input type="number" class="form-control" id="txt-an" placeholder="" value="" required="" min="0">
+                        <div class="invalid-feedback">Campo vacío o dato inválido.</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card card-body form-group shadow-sm">
+                        <label for="txt-tn" class="small">Tasa natalidad</label>
+                        <input type="number" class="form-control" id="txt-tn" placeholder="" value="" required="" min="0">
+                        <div class="invalid-feedback">Campo vacío o dato inválido.</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card card-body form-group shadow-sm">
+                        <label for="txt-tm" class="small">Tasa mortalidad</label>
+                        <input type="number" class="form-control" id="txt-tm" value="" required="" min="0">
+                        <div class="invalid-feedback">Campo vacío o dato inválido.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-3">
+                    <div class="row">
+                        <div class="col-12 col-md-3 col-lg-12">
+                            <div class="row">
+                                <div class="col-6 col-md-12 col-xl-6">
+                                    <div class="card card-body form-group shadow-sm">
+                                        <label for="txt-em" class="small">Tasa de emigración</label>
+                                        <input type="number" class="form-control" id="txt-em" value="" required="" min="0">
+                                        <div class="invalid-feedback">Campo vacío o dato inválido.</div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-12 col-xl-6">
+                                    <div class="card card-body form-group shadow-sm">
+                                        <label for="txt-in" class="small">Tasa de inmigración</label>
+                                        <input type="number" class="form-control" id="txt-in" value="" required="" min="0">
+                                        <div class="invalid-feedback">Campo vacío o dato inválido.</div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-12 col-xl-6 text-center">
+                                    <button class="btn btn-primary btn-scp" type="button" onclick="calcularCP()">Iniciar</button>
+                                </div>
+                                <div class="col-6 col-md-12 col-xl-6 text-center mt-0 mt-md-3 mt-xl-0">
+                                    <button class="btn btn-primary btn-scp" type="button" onclick="reset()">Restablecer</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-8 col-md-6 col-lg-12 m-auto">
+                            <div class="mt-5 mt-lg-3 card shadow-sm">
+                                <div class="card-header small">Porcentaje de crecimiento poblacional</div>
+                                <div class="card-body">Gráfico</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-9 mt-5 mt-lg-0">
+                    <div class="card shadow-sm">
+                        <div class="card-header">Crecimiento poblacional a través del tiempo</div>
+                        <div class="card-body">
+                            <div id="chartdiv"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="jumbotron pt-2 bg-white">
-            <h4>Resultados</h4>
-            <div id="chartdiv">Hola mundo</div>
-        </div>
+        <footer class="px-2 px-sm-5 pb-4 text-center text-white">
+            <div class="p-0 px-sm-5 mx-3">
+                <p class="pt-4">Teoría de la simulación IS-910, Ingeniería en Sistemas UNAH<br>Elaborado por <a href="#" class="text-white">Gabriela Yaneth Cabrera</a>, <a href="#" class="text-white">Walter Rivera H</a>, <a href="#" class="text-white">Víctor Josué Bueso</a>.<br>© 2020.</p>
+            </div>
+        </footer>
     </main>
     <!-- Bootstrap & jQuery -->
     <script src="js/bootstrap.min.js"></script>

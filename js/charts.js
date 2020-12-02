@@ -54,19 +54,19 @@ function createAxisAndSeries(field, name, opposite, bullet) {
       triangle.width = 12;
       triangle.height = 12;
       break;
-    case "rectangle":
-      var bullet = series.bullets.push(new am4charts.Bullet());
-      bullet.width = 10;
-      bullet.height = 10;
-      bullet.horizontalCenter = "middle";
-      bullet.verticalCenter = "middle";
+    // case "rectangle":
+    //   var bullet = series.bullets.push(new am4charts.Bullet());
+    //   bullet.width = 10;
+    //   bullet.height = 10;
+    //   bullet.horizontalCenter = "middle";
+    //   bullet.verticalCenter = "middle";
       
-      var rectangle = bullet.createChild(am4core.Rectangle);
-      rectangle.stroke = interfaceColors.getFor("background");
-      rectangle.strokeWidth = 2;
-      rectangle.width = 10;
-      rectangle.height = 10;
-      break;
+    //   var rectangle = bullet.createChild(am4core.Rectangle);
+    //   rectangle.stroke = interfaceColors.getFor("background");
+    //   rectangle.strokeWidth = 2;
+    //   rectangle.width = 10;
+    //   rectangle.height = 10;
+    //   break;
     default:
       var bullet = series.bullets.push(new am4charts.CircleBullet());
       bullet.circle.stroke = interfaceColors.getFor("background");
@@ -83,7 +83,7 @@ function createAxisAndSeries(field, name, opposite, bullet) {
 
 createAxisAndSeries("visits", "Visits", false, "circle");
 createAxisAndSeries("views", "Views", true, "triangle");
-createAxisAndSeries("hits", "Hits", true, "rectangle");
+// createAxisAndSeries("hits", "Hits", true, "rectangle");
 
 // Add legend
 chart.legend = new am4charts.Legend();
@@ -99,7 +99,7 @@ function generateChartData() {
   firstDate.setHours(0, 0, 0, 0);
 
   var visits = 1600;
-  var hits = 2900;
+  // var hits = 2900;
   var views = 8700;
 
   for (var i = 0; i < 15; i++) {
@@ -110,13 +110,13 @@ function generateChartData() {
     newDate.setDate(newDate.getDate() + i);
 
     visits += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
-    hits += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+    // hits += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
     views += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
 
     chartData.push({
       date: newDate,
       visits: visits,
-      hits: hits,
+      // hits: hits,
       views: views
     });
   }
