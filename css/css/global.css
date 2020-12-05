@@ -33,6 +33,9 @@
 .main__content .header h4 {
   font-family: "Poppins", sans-serif;
 }
+.main__content .header h4 span img {
+  width: 1.63rem;
+}
 .main__content .section_1 {
   display: grid;
   grid-template-columns: 1fr;
@@ -116,6 +119,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
+  height: 110px;
 }
 .card1__section1 {
   display: flex;
@@ -178,10 +182,11 @@
   padding: 16px;
   padding-bottom: 8px;
   text-align: center;
+  height: 98.75px;
 }
 .card2 label {
   font-size: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 0;
   font-family: "Poppins", sans-serif;
   font-weight: bold;
 }
@@ -232,8 +237,35 @@
   background-color: #68E2C7;
 }
 
+.button__green:hover {
+  background-color: #29d6b1;
+}
+
+.button__green:active {
+  background-color: #25c19f;
+  border-color: #25c19f;
+}
+
+.button__green:focus {
+  box-shadow: 0 0 0 0.2rem rgba(104,226,199,.5) !important;
+  outline: 0;
+}
+
 .button__rose {
   background-color: #FDB3A8;
+}
+
+.button__rose:hover {
+  background-color: #fda496;
+}
+
+.button__rose:active {
+  background-color: #fc9282;
+  border-color: #fc9282;
+}
+.button__rose:focus {
+  box-shadow: 0 0 0 0.2rem rgba(253,179,168,.5) !important;
+  outline: 0;
 }
 
 .card__graphic {
@@ -272,7 +304,6 @@
     height: 208px;
   }
 }
-
 @media only screen and (min-width: 992px) {
   .card__graphic2__container {
     grid-template-columns: 1fr;
@@ -284,10 +315,19 @@
     grid-column-end: 5;
   }
 }
+@media only screen and (min-width: 1200px) {
+  .card2 {
+    height: 135px;
+  }
+}
+@media only screen and (max-width: 564px) {
+  .card2 {
+    height: 122px;
+  }
+}
 .card__graphic2__container .card_graphic2 .card__body {
   height: 390px;
-}
-.card__graphic2__container .card_graphic2 .card__body #chartdiv {
+}#chartdiv {
   margin-top: 16px;
   height: 100%;
 }

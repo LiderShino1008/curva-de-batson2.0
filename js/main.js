@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @fileoverview    Funciones principales para calcular crecimiento poblacional
  *                  y validar si los campos están correctos.
  * @version         1.0
@@ -32,7 +32,7 @@ function calcularCP() {
     boolEm = validarCampoVacio('txt-em');
     boolIn = validarCampoVacio('txt-in');
     if (boolPi && boolAn && boolTn && boolTm && boolEm && boolIn) {
-        let indicadores = {
+        return {
             poblacionInicial: parseFloat(document.getElementById('txt-pi').value),
             anios: parseFloat(document.getElementById('txt-an').value),
             tasaNatalidad: parseFloat(document.getElementById('txt-tn').value),
@@ -40,11 +40,23 @@ function calcularCP() {
             tasaEmigracion: parseFloat(document.getElementById('txt-em').value),
             tasaInmigracion: parseFloat(document.getElementById('txt-in').value)
         };
-        console.log(indicadores);
-    } else {
-        console.log('Inválido');
     }
-    return null;
+    else {
+        console.log('Formulario inválido');
+        return null;
+    }
+}
+
+/**
+ * Reiniciar indicadores para el cálculo de crecimiento poblacional.
+ */
+function restablecer(){
+    $('input').trigger('reset');
+    $('input').val('');
+    $('#txt-em').val(0);
+    $('#txt-in').val(0);
+    $('input').removeClass("is-valid");
+    $('input').removeClass("is-invalid");
 }
 
 /**
@@ -53,13 +65,13 @@ function calcularCP() {
  * @return {boolean} true || false
  */
 function validarCampoVacio(id){
-    if(document.getElementById(id).value == ""){
-        document.getElementById(id).classList.remove("is-valid");
-        document.getElementById(id).classList.add("is-invalid");
+    if(document.getElementById(id).value == ''){
+        document.getElementById(id).classList.remove('is-valid');
+        document.getElementById(id).classList.add('is-invalid');
         return false;
     } else {
-        document.getElementById(id).classList.remove("is-invalid");
-        document.getElementById(id).classList.add("is-valid");
+        document.getElementById(id).classList.remove('is-invalid');
+        document.getElementById(id).classList.add('is-valid');
         return true;
     }
 }

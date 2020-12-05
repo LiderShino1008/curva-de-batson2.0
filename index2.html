@@ -1,9 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulatión</title>
+    <title>Simulador | Crecimiento poblacional</title>
+    <link href="img/logo.svg" rel="icon">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
     <script src="https://kit.fontawesome.com/552ebddad2.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -14,16 +17,16 @@
 </head>
 <body class="main">
    <div class="main__content">
-       <header class="header">
-           <h4>Simulación de crecimiento poblacional</h4>
+       <header class="header mt-2">
+           <h4><span><img src="img/logo.svg" class="mr-2"></span>Simulación de crecimiento poblacional</h4>
        </header>
         <section class="section_1">
             <div class="card1__container">
                 <div class="card1 card__ card1__blue">
                     <div class="card1__section1">
-                        <label>Población inicial</label>
-                        <input type="number">
-                        <span></span>
+                        <label for="txt-pi">Población inicial</label>
+                        <input type="number" class="form-control rounded-0" id="txt-pi" required="" min="0">
+                        <span class="invalid-feedback">Dato inválido</span>
                     </div>
                     <div class="card1__section2">
                         <i class="fas fa-users"></i>
@@ -34,9 +37,9 @@
             <div class="card1__container">
                 <div class="card1 card__ card1__green">
                     <div class="card1__section1">
-                        <label>Años a proyectar</label>
-                        <input type="number">
-                        <span></span>
+                        <label for="txt-an">Años a proyectar</label>
+                        <input type="number" class="form-control rounded-0" id="txt-an" required="" min="0">
+                        <span class="invalid-feedback">Dato inválido</span>
                     </div>
                     <div class="card1__section2">
                         <i class="fas fa-chart-line"></i>
@@ -47,9 +50,9 @@
             <div class="card1__container">
                 <div class="card1 card__ card1__rose">
                     <div class="card1__section1">
-                        <label>Tasa natalidad</label>
-                        <input type="number">
-                        <span></span>
+                        <label for="txt-tn">Tasa natalidad</label>
+                        <input type="number" class="form-control rounded-0" id="txt-tn" required="" min="0">
+                        <span class="invalid-feedback">Dato inválido</span>
                     </div>
                     <div class="card1__section2">
                         <i class="fas fa-baby-carriage"></i>
@@ -60,9 +63,9 @@
             <div class="card1__container">
                 <div class="card1 card__ card1__green">
                     <div class="card1__section1">
-                        <label>Tasa mortalidad</label>
-                        <input type="number">
-                        <span>Feedback</span>
+                        <label for="txt-tm">Tasa mortalidad</label>
+                        <input type="number" class="form-control rounded-0" id="txt-tm" required="" min="0">
+                        <span class="invalid-feedback">Dato inválido</span>
                     </div>
                     <div class="card1__section2">
                         <i class="fas fa-user-alt-slash"></i>
@@ -71,26 +74,26 @@
             </div>
         </section>
 
-        <section  class="section_2">
+        <section class="section_2">
             <div class="section_2_1">
-                <div class="section_2_1_1">
+                <section class="section_2_1_1">
                     <div class="card__ card2 ">
-                        <label>Tasa emigración</label>
-                        <input type="number" value="0">
-                        <span>Feedback</span>
+                        <label for="txt-em">Tasa emigración</label>
+                        <input type="number" value="0" id="txt-em" class="form-control d-inline text-dark">
+                        <span class="invalid-feedback">Dato inválido</span>
                     </div>
                     <div class="card__ card2 ">
-                        <label>Tasa inmigración</label>
-                        <input type="number" value="0">
-                        <span>Feedback</span>
+                        <label for="txt-im">Tasa inmigración</label>
+                        <input type="number" value="0" id="txt-in" class="form-control d-inline text-dark">
+                        <span class="invalid-feedback">Dato inválido</span>
                     </div>
                     <div>
-                        <button class="button__main button__green">iniciar</button>
+                        <button class="button__main button__green" onclick="calcularCP()">Iniciar</button>
                     </div>
                     <div>
-                        <button class="button__main button__rose">Restablecer</button>
+                        <button class="button__main button__rose" onclick="restablecer()">Restablecer</button>
                     </div>
-                </div>
+                </section>
                 <div class="section_2_1_2">
                     <div class="card__ card__graphic">
                         <div class="card__header">
@@ -114,17 +117,15 @@
             </div>
            
         </section>
-        <footer class="px-2 px-sm-5 pb-4 text-center text-white">
-            <div class="p-0 px-sm-5 mx-3">
-                <p class="pt-4">Teoría de la simulación IS-910, Ingeniería en Sistemas UNAH<br>Elaborado por <a href="#" class="text-white">Gabriela Yaneth Cabrera</a>, <a href="#" class="text-white">Walter Rivera H</a>, <a href="#" class="text-white">Víctor Josué Bueso</a>.<br>© 2020.</p>
-            </div>
+        <footer>
+            <p class="pt-4">Teoría de la simulación IS-910, Ingeniería en Sistemas UNAH<br>Elaborado por <a href="#">Gabriela Yaneth Cabrera</a>, <a href="#">Walter Rivera H</a>, <a href="#">Víctor Josué Bueso</a>.<br>© 2020.</p>
         </footer>
    </div>
 
 
-   <script src="js/bootstrap.min.js"></script>
-    <script src="js/popper.min.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <!-- amCharts -->
     <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
