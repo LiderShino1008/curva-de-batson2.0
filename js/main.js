@@ -75,3 +75,6 @@ function validarCampoVacio(id){
         return true;
     }
 }
+
+
+

@@ -6,22 +6,22 @@
     <title>Simulador | Crecimiento poblacional</title>
     <link href="img/logo.svg" rel="icon">
     <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
+    
     <script src="https://kit.fontawesome.com/552ebddad2.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Rubik&display=swap" rel="stylesheet">
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="css/css/global.css" />
-
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
 </head>
 <body class="main">
    <div class="main__content">
        <header class="header mt-2">
            <h4><span><img src="img/logo.svg" class="mr-2"></span>Simulación de crecimiento poblacional</h4>
        </header>
-        <section class="section_1">
-            <div class="card1__container">
+        <section class="row ">
+            <div class="card1__container col-xl-3 col-md-6 col-12 mb-3 mt-3">
                 <div class="card1 card__ card1__blue">
                     <div class="card1__section1">
                         <label for="txt-pi">Población inicial</label>
@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <div class="card1__container">
+            <div class="card1__container col-xl-3 col-md-6 col-12 mb-3 mt-3">
                 <div class="card1 card__ card1__green">
                     <div class="card1__section1">
                         <label for="txt-an">Años a proyectar</label>
@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-            <div class="card1__container">
+            <div class="card1__container col-xl-3 col-md-6 col-12 mb-3 mt-3">
                 <div class="card1 card__ card1__rose">
                     <div class="card1__section1">
                         <label for="txt-tn">Tasa natalidad</label>
@@ -60,7 +60,7 @@
                 </div>
             </div>
 
-            <div class="card1__container">
+            <div class="card1__container col-xl-3 col-md-6 col-12 mb-3 mt-3">
                 <div class="card1 card__ card1__green">
                     <div class="card1__section1">
                         <label for="txt-tm">Tasa mortalidad</label>
@@ -74,7 +74,7 @@
             </div>
         </section>
 
-        <section class="section_2">
+        <section class="section_2 ">
             <div class="section_2_1">
                 <section class="section_2_1_1">
                     <div class="card__ card2 ">
@@ -100,7 +100,7 @@
                             <label>Porcentaje de crecimiento Poblacional</label>
                         </div>
                         <div class="card__body graphic1__container">
-                           
+                            <canvas id="myChart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -111,21 +111,22 @@
                         <label>Crecimiento poblacional a través del tiempo</label>
                     </div>
                     <div class="card__body ">
-                        <div id="chartdiv"></div>
+                        <canvas id="lineChart"></canvas>
                     </div>
                 </div>
             </div>
            
         </section>
-        <footer>
-            <p class="pt-4">Teoría de la simulación IS-910, Ingeniería en Sistemas UNAH<br>Elaborado por <a href="#">Gabriela Yaneth Cabrera</a>, <a href="#">Walter Rivera H</a>, <a href="#">Víctor Josué Bueso</a>.<br>© 2020.</p>
-        </footer>
    </div>
-
+    <footer>
+        <center> <p class="pt-4">Teoría de la simulación IS-910, Ingeniería en Sistemas UNAH<br>Elaborado por <a href="#">Gabriela Yaneth Cabrera</a>, <a href="#">Walter Rivera H</a>, <a href="#">Víctor Josué Bueso</a>.<br>© 2020.</p>
+        </center>
+        </footer>
 
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
     <!-- amCharts -->
     <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
