@@ -1,195 +1,128 @@
-/*
+// Global variables for charts
+var chart;
+var line;
+
 am4core.ready(function() {
+  // Themes begin
+  am4core.useTheme(am4themes_animated);
+  // Themes end
+  
+  // *** LINEDIV ***
+  // Grafico para mostrar el porcentaje de crecimiento poblacional
+  line = am4core.create("linediv", am4charts.XYChart);
+  line.data = [{
+    "poblacion": "Inicial",
+    "personas": (9500000/9500000)
+  }, {
+    "poblacion": "Natural",
+    "personas": (9625000/9500000)
+  }, {
+    "poblacion": "Absoluto",
+    "personas": (9600478/9500000)
+  }];
+  var categoria_line = line.xAxes.push(new am4charts.CategoryAxis());
+  categoria_line.dataFields.category = "poblacion";
+  categoria_line.renderer.grid.template.location = 0;
+  categoria_line.renderer.minGridDistance = 30;    
+  categoria_line.renderer.labels.template.adapter.add("dy", function(dy, target) {
+    if (target.dataItem && target.dataItem.index & 2 == 2) {
+      return dy + 25;
+    }
+    return dy;
+  });    
+  var valueAxis_line = line.yAxes.push(new am4charts.ValueAxis());
+  series = line.series.push(new am4charts.ColumnSeries());
+  series.dataFields.valueY = "personas";
+  series.dataFields.categoryX = "poblacion";
+  series.name = "personas";
+  series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/]";
+  series.columns.template.fillOpacity = .8;
+  var plantillaColumna_line = series.columns.template;
+  plantillaColumna_line.strokeWidth = 2;
+  plantillaColumna_line.strokeOpacity = 1;
 
-// Themes begin
-am4core.useTheme(am4themes_material);
-am4core.useTheme(am4themes_animated);
-// Themes end
+  // *** CHARTDIV ***
+  // Grafico de crecimiento poblacional a traves del tiempo
+  // Themes begin
+  am4core.useTheme(am4themes_material);
+  // Themes end
 
-// Create chart instance
-var chart = am4core.create("chartdiv", am4charts.XYChart);
+  // Create chart instance
+  chart = am4core.create("chartdiv", am4charts.XYChart);
 
-//
+  // Increase contrast by taking evey second color
+  chart.colors.step = 2;
 
-// Increase contrast by taking evey second color
-chart.colors.step = 2;
+  // Add data
+  chart.data = [
+    {date: '2020', crecimientoNatural: 9500000, crecimientoAbsoluto: 9500000},
+    {date: '2021', crecimientoNatural: 9520000, crecimientoAbsoluto: 9515321},
+    {date: '2022', crecimientoNatural: 9576140, crecimientoAbsoluto: 9552100},
+    {date: '2023', crecimientoNatural: 9596788, crecimientoAbsoluto: 9558798},
+    {date: '2024', crecimientoNatural: 9610000, crecimientoAbsoluto: 9571000},
+    {date: '2025', crecimientoNatural: 9612354, crecimientoAbsoluto: 9582100},
+    {date: '2026', crecimientoNatural: 9625000, crecimientoAbsoluto: 9600478}
+  ];
 
-// Add data
-chart.data = generateChartData();
+  // Create axes
+  var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+  dateAxis.renderer.minGridDistance = 50;
 
-// Create axes
-var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-dateAxis.renderer.minGridDistance = 50;
-
-// Create series
-function createAxisAndSeries(field, name, opposite, bullet) {
-  var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-  if(chart.yAxes.indexOf(valueAxis) != 0){
-  	valueAxis.syncWithAxis = chart.yAxes.getIndex(0);
+  // Create series
+  function createAxisAndSeries(field, name, opposite, bullet) {
+    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    if(chart.yAxes.indexOf(valueAxis) != 0){
+      valueAxis.syncWithAxis = chart.yAxes.getIndex(0);
+    }
+    
+    var series = chart.series.push(new am4charts.LineSeries());
+    series.dataFields.valueY = field;
+    series.dataFields.dateX = "date";
+    series.strokeWidth = 2;
+    series.yAxis = valueAxis;
+    series.name = name;
+    series.tooltipText = "{name}: [bold]{valueY}[/]";
+    series.tensionX = 0.8;
+    series.showOnInit = true;
+    
+    var interfaceColors = new am4core.InterfaceColorSet();
+    
+    switch(bullet) {
+      case "triangle":
+        var bullet = series.bullets.push(new am4charts.Bullet());
+        bullet.width = 12;
+        bullet.height = 12;
+        bullet.horizontalCenter = "middle";
+        bullet.verticalCenter = "middle";
+        
+        var triangle = bullet.createChild(am4core.Triangle);
+        triangle.stroke = interfaceColors.getFor("background");
+        triangle.strokeWidth = 2;
+        triangle.direction = "top";
+        triangle.width = 12;
+        triangle.height = 12;
+        break;
+      default:
+        var bullet = series.bullets.push(new am4charts.CircleBullet());
+        bullet.circle.stroke = interfaceColors.getFor("background");
+        bullet.circle.strokeWidth = 2;
+        break;
+    }
+    
+    valueAxis.renderer.line.strokeOpacity = 1;
+    valueAxis.renderer.line.strokeWidth = 2;
+    valueAxis.renderer.line.stroke = series.stroke;
+    valueAxis.renderer.labels.template.fill = series.stroke;
+    valueAxis.renderer.opposite = opposite;
   }
-  
-  var series = chart.series.push(new am4charts.LineSeries());
-  series.dataFields.valueY = field;
-  series.dataFields.dateX = "date";
-  series.strokeWidth = 2;
-  series.yAxis = valueAxis;
-  series.name = name;
-  series.tooltipText = "{name}: [bold]{valueY}[/]";
-  series.tensionX = 0.8;
-  series.showOnInit = true;
-  
-  var interfaceColors = new am4core.InterfaceColorSet();
-  
-  switch(bullet) {
-    case "triangle":
-      var bullet = series.bullets.push(new am4charts.Bullet());
-      bullet.width = 12;
-      bullet.height = 12;
-      bullet.horizontalCenter = "middle";
-      bullet.verticalCenter = "middle";
-      
-      var triangle = bullet.createChild(am4core.Triangle);
-      triangle.stroke = interfaceColors.getFor("background");
-      triangle.strokeWidth = 2;
-      triangle.direction = "top";
-      triangle.width = 12;
-      triangle.height = 12;
-      break;
-    // case "rectangle":
-    //   var bullet = series.bullets.push(new am4charts.Bullet());
-    //   bullet.width = 10;
-    //   bullet.height = 10;
-    //   bullet.horizontalCenter = "middle";
-    //   bullet.verticalCenter = "middle";
-      
-    //   var rectangle = bullet.createChild(am4core.Rectangle);
-    //   rectangle.stroke = interfaceColors.getFor("background");
-    //   rectangle.strokeWidth = 2;
-    //   rectangle.width = 10;
-    //   rectangle.height = 10;
-    //   break;
-    default:
-      var bullet = series.bullets.push(new am4charts.CircleBullet());
-      bullet.circle.stroke = interfaceColors.getFor("background");
-      bullet.circle.strokeWidth = 2;
-      break;
-  }
-  
-  valueAxis.renderer.line.strokeOpacity = 1;
-  valueAxis.renderer.line.strokeWidth = 2;
-  valueAxis.renderer.line.stroke = series.stroke;
-  valueAxis.renderer.labels.template.fill = series.stroke;
-  valueAxis.renderer.opposite = opposite;
-}
 
-createAxisAndSeries("visits", "Visits", false, "circle");
-createAxisAndSeries("views", "Views", true, "triangle");
-// createAxisAndSeries("hits", "Hits", true, "rectangle");
+  createAxisAndSeries("crecimientoNatural", "Crecimiento Natural", false, "circle");
+  createAxisAndSeries("crecimientoAbsoluto", "Crecimiento Absoluto", true, "triangle");
 
-// Add legend
-chart.legend = new am4charts.Legend();
+  // Add legend
+  chart.legend = new am4charts.Legend();
 
-// Add cursor
-chart.cursor = new am4charts.XYCursor();
-
-// generate some random data, quite different range
-function generateChartData() {
-  var chartData = [];
-  var firstDate = new Date();
-  firstDate.setDate(firstDate.getDate() - 100);
-  firstDate.setHours(0, 0, 0, 0);
-
-  var visits = 1600;
-  // var hits = 2900;
-  var views = 8700;
-
-  for (var i = 0; i < 15; i++) {
-    // we create date objects here. In your data, you can have date strings
-    // and then set format of your dates using chart.dataDateFormat property,
-    // however when possible, use date objects, as this will speed up chart rendering.
-    var newDate = new Date(firstDate);
-    newDate.setDate(newDate.getDate() + i);
-
-    visits += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
-    // hits += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
-    views += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
-
-    chartData.push({
-      date: newDate,
-      visits: visits,
-      // hits: hits,
-      views: views
-    });
-  }
-  return chartData;
-}
+  // Add cursor
+  chart.cursor = new am4charts.XYCursor();
 
 }); // end am4core.ready()
-*/
-
-
-//line
-var ctxL = document.getElementById("lineChart").getContext('2d');
-var myLineChart = new Chart(ctxL, {
-type: 'line',
-data: {
-labels: ["January", "February", "March", "April", "May", "June", "July"],
-datasets: [{
-label: "My First dataset",
-data: [65, 59, 80, 81, 56, 55, 40],
-backgroundColor: [
-'rgba(16,100,233, 0.0)',
-],
-borderColor: [
-'#1064E9',
-],
-borderWidth: 2
-},
-{
-label: "My Second dataset",
-data: [28, 48, 40, 19, 86, 27, 90],
-backgroundColor: [
-'rgba(0, 137, 132, .0)',
-],
-borderColor: [
-'#68E2C7',
-],
-borderWidth: 2
-}
-]
-},
-options: {
-responsive: true
-}
-});
-
-
-var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'bar',
-data: {
-labels: ["Red", "Blue"],
-datasets: [{
-label: '',
-data: [12, 19, 3, 5, 2, 3],
-backgroundColor: [
-'rgba(255, 99, 132, 0.2)',
-'rgba(54, 162, 235, 0.2)'
-],
-borderColor: [
-'rgba(255,99,132,1)',
-'rgba(54, 162, 235, 1)'
-],
-borderWidth: 1
-}]
-},
-options: {
-scales: {
-yAxes: [{
-ticks: {
-beginAtZero: true
-}
-}]
-}
-}
-});

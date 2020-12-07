@@ -26,20 +26,17 @@
   margin: auto;
 }
 .main__content .header {
-  padding: 8px 0 0 0;
   width: 100%;
   text-align: center;
   border-bottom: 2px solid #E9ECEF;
 }
 .main__content .header h4 {
-  font-size: 16px;
   font-family: "Poppins", sans-serif;
 }
-.main__content .header h4 img {
-  height: 24px;
+.main__content .header h4 span img {
+  width: 1.63rem;
 }
 .main__content .section_1 {
-  margin-bottom: 16px;
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 16px;
@@ -109,9 +106,6 @@
     grid-template-columns: 1fr 1fr;
   }
 }
-.main__content .section_2 .section_2_1 .section_2_1_2 {
-  height: 100%;
-}
 
 .card__ {
   background-color: white;
@@ -120,12 +114,12 @@
 }
 
 .card1 {
-  height: 7rem;
   padding: 16px;
   padding-bottom: 4px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
+  height: 110px;
 }
 .card1__section1 {
   display: flex;
@@ -153,8 +147,8 @@
   outline: 0;
   border-bottom: 2px solid #8FA2C3;
 }
-.card1__section1 .feedback__container {
-  height: 32px;
+.card1__section1 span {
+  height: 24px;
 }
 .card1__section2 {
   display: flex;
@@ -188,10 +182,11 @@
   padding: 16px;
   padding-bottom: 8px;
   text-align: center;
-  height: 8rem;
+  height: 98.75px;
 }
 .card2 label {
   font-size: 12px;
+  margin-bottom: 0;
   font-family: "Poppins", sans-serif;
   font-weight: bold;
 }
@@ -242,13 +237,40 @@
   background-color: #68E2C7;
 }
 
+.button__green:hover {
+  background-color: #29d6b1;
+}
+
+.button__green:active {
+  background-color: #25c19f;
+  border-color: #25c19f;
+}
+
+.button__green:focus {
+  box-shadow: 0 0 0 0.2rem rgba(104,226,199,.5) !important;
+  outline: 0;
+}
+
 .button__rose {
   background-color: #FDB3A8;
 }
 
+.button__rose:hover {
+  background-color: #fda496;
+}
+
+.button__rose:active {
+  background-color: #fc9282;
+  border-color: #fc9282;
+}
+.button__rose:focus {
+  box-shadow: 0 0 0 0.2rem rgba(253,179,168,.5) !important;
+  outline: 0;
+}
+
 .card__graphic {
   padding: 16px;
-  height: 100%;
+  height: auto;
 }
 @media only screen and (min-width: 992px) {
   .card__graphic {
@@ -282,7 +304,6 @@
     height: 208px;
   }
 }
-
 @media only screen and (min-width: 992px) {
   .card__graphic2__container {
     grid-template-columns: 1fr;
@@ -294,25 +315,24 @@
     grid-column-end: 5;
   }
 }
-.card__graphic2__container .card_graphic2 {
-  padding: 8px 16px;
+@media only screen and (min-width: 1200px) {
+  .card2 {
+    height: 135px;
+  }
 }
-.card__graphic2__container .card_graphic2 .card__body #chartdiv {
+@media only screen and (max-width: 564px) {
+  .card2 {
+    height: 122px;
+  }
+}
+.card__graphic2__container .card_graphic2 .card__body {
+  height: 390px;
+}#chartdiv {
   margin-top: 16px;
   height: 100%;
 }
 
-#lineChart {
+.chartdiv {
   margin-top: 16px;
-  height: 440px !important;
-}
-
-.invalid-feedback {
-  display: hidden !important;
-}
-
-#myChart {
-  height: 100% !important;
-  max-width: 100%;
-  margin: auto;
+  height: 100%;
 }

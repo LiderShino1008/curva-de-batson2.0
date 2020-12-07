@@ -17,20 +17,14 @@
     width: 90%;
     margin: auto;
     .header{
-        padding: $spacer-xs 0 0 0 ;
         width: 100%;
         text-align: center;
         border-bottom: 2px solid $grey-light;
         h4{
-            font-size: $spacer-s;
-            img{
-                height: $spacer-m;
-            }
             font-family: $font-core;
         }
     }
     .section_1{
-        margin-bottom: $spacer-s;
         display: grid;
         grid-template-columns: 1fr;
         row-gap: $spacer-s;
@@ -84,10 +78,6 @@
                     grid-template-columns: 1fr 1fr;
                 }
             }
-            .section_2_1_2{
-                height: 100%;
-            }
-
         }
     }
 }
@@ -99,7 +89,6 @@
 }
 
 .card1{
-    height: 7rem;
     padding: $spacer-s;
     padding-bottom: $spacer-xxs ;
     display: grid;
@@ -131,8 +120,8 @@
                 border-bottom: 2px solid $grey-dark-2;
             }
         }
-        .feedback__container{
-            height: $spacer-l;
+        span{
+            height: $spacer-m;
         }
     }
     &__section2{
@@ -171,9 +160,9 @@
     padding: $spacer-s;
     padding-bottom: $spacer-xs;
     text-align: center;
-    height: 8rem;
     label{
         font-size: $text-xs ;
+        margin-bottom: $spacer-m;
         font-family: $font-core;
         font-weight: bold;
     }
@@ -233,9 +222,8 @@
 }
 
 .card__graphic{
-    
     padding: $spacer-s;
-    height: 100%;
+    height: auto;
     @include media(desktop-s){
         width: 100%;
     }
@@ -274,9 +262,8 @@
         grid-column-end:5;
     }
     .card_graphic2{
-        padding: $spacer-xs $spacer-s;
         .card__body{
-           // height: $heading-xxl * 5 + $heading-m;
+            height: $heading-xxl * 5 + $heading-m;
             #chartdiv{
                 margin-top: $spacer-s;
                 height: 100%;
@@ -285,17 +272,7 @@
     }
 }
 
-#lineChart{
+.chartdiv{
     margin-top: $spacer-s;
-   height: 440px !important;
-}
-
-.invalid-feedback {
-    display: hidden !important;
-}
-
-#myChart{
-    height: 100% !important;
-    max-width: 100%;
-    margin: auto;
+    height: 100%;
 }
