@@ -152,7 +152,10 @@ function validarCampoVacio(id){
 
 function ventanaModal(id, data) {
     data=data || {};                            // si no existe data, creamos un objeto vacío para evitar posteriores errores
-    id="modal-"+id;                             // añadimos "modal-" a la id para evitar conflictos con otros elementos
+    id="modal-"+id;        
+    if(document.getElementById(id)){
+
+    }                   // añadimos "modal-" a la id para evitar conflictos con otros elementos
     if (document.getElementById(id)==null) {    // crear elemento si no existe
       var d=document.createElement("div");
       d.className="jmgmodal";                   // clase para estilos con CSS
@@ -176,7 +179,7 @@ function ventanaModal(id, data) {
       // creamos la caja donde se mostrará el contenido
       var ct=document.createElement("div");
       ct.className="content";
-      ct.id="content-modal"
+      ct.id="content-"+id;
 
       
       var f=document.createElement("div");
@@ -218,10 +221,10 @@ function ventanaModal(id, data) {
 
   function generateContent(){
       console.log("historial",historial)
-    document.getElementById("content-modal").innerHTML="";
+    document.getElementById("content-modal-historial").innerHTML="";
     for(let i=0; i<historial.length;i++){
         console.log("hola")
-        document.getElementById("content-modal").innerHTML+=` <div class="item-list" onclick="selectItem(${i})" id="">
+        document.getElementById("content-modal-historial").innerHTML+=` <div class="item-list" onclick="selectItem(${i})" id="">
         <div class="item-content item row" >
             <div class="col-6 content-element1">
                 <span>${historial[i].nombre}</span>
@@ -276,15 +279,15 @@ function ventanaModal(id, data) {
         `;
     }
 
-    document.getElementById("content-modal").innerHTML+=`<button class="button__main button__blue--dark  button-save-2" onclick="loadSimulation()">
+    document.getElementById("content-modal-historial").innerHTML+=`<button class="button__main button__blue--dark  button-save-2" onclick="loadSimulation()">
     Cargar
    </button>`
     
   }
 
   function  generateSaveSim(){
-    document.getElementById("content-modal").innerHTML="";
-    document.getElementById("content-modal").innerHTML+=`
+    document.getElementById("content-modal-guardar").innerHTML="";
+    document.getElementById("content-modal-guardar").innerHTML+=`
     <input type="text" class="form-control" style="margin-top:2rem" placeholder="Nombre del escenario" id="name-simulation">
     <button class="button__main button__green button-save-2" onclick="saveSimulation()">
         Guardar
@@ -375,7 +378,7 @@ function ventanaModal(id, data) {
   }
 
   function  generateInfo(){
-    document.getElementById("content-modal").innerHTML+=`
+    document.getElementById("content-modal-ayuda").innerHTML+=`
     <p class="text_info ">
     El siguiente modelo de crecimiento poblacional proyecta la cantidad de habitantes en base al crecimiento poblacional y el crecimiento poblacional absoluto utilizando un algoritmo recursivo que permitirá realizar la proyección en años en base al resultado del crecimiento del año anterior y siguiendo la misma tasa de natalidad, mortalidad, emigración e inmigración.
     </p>
