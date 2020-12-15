@@ -427,14 +427,18 @@
     padding: 1rem 2rem ;
   }
 
+  .item-content-active{
+    background-color: #E1ECF4;
+    box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.1);
+  }
   .item-content:active{
     background-color: #E1ECF4;
   }
-
+/*
   .item-content:hover{
     background-color: #E1ECF4;
   }
-
+*/
   /*
   .content-item:hover{
     background-color: #E1ECF4;

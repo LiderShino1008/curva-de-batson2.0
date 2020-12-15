@@ -36,6 +36,14 @@ console.log(historial)
  * saldo migratorio (tasa de emigrantes y tasa de inmigrantes).
  */
 function calcularCP(config) {
+    if(config.flag){
+        document.getElementById('txt-pi').value=historial[config.id].poblacionInicial;
+        document.getElementById('txt-an').value=historial[config.id].anios;
+        document.getElementById('txt-tn').value=historial[config.id].tasaNatalidad;
+        document.getElementById('txt-tm').value=historial[config.id].tasaMortalidad;
+        document.getElementById('txt-em').value=historial[config.id].tasaEmigracion;
+        document.getElementById('txt-in').value=historial[config.id].tasaInmigracion;
+    }
     boolPi = validarCampoVacio('txt-pi');
     boolAn = validarCampoVacio('txt-an');
     boolTn = validarCampoVacio('txt-tn');
@@ -66,7 +74,7 @@ function calcularCP(config) {
                 tasaEmigracion:  parseFloat(historial[config.id].tasaEmigracion),
                 tasaInmigracion: parseFloat(historial[config.id].tasaInmigracion)
             };
-    
+            
         }
        
         
@@ -144,8 +152,8 @@ function validarCampoVacio(id){
         document.getElementById(id).classList.add('is-invalid');
         return false;
     } else {
-        document.getElementById(id).classList.remove('is-invalid');
-        document.getElementById(id).classList.add('is-valid');
+        //document.getElementById(id).classList.remove('is-invalid');
+        //document.getElementById(id).classList.add('is-valid');
         return true;
     }
 }
@@ -219,13 +227,27 @@ function ventanaModal(id, data) {
      
   }
 
+  var controlActive=false
+  function activeItem(){
+      if(!controlActive){
+          controlActive=true
+          for(let i=0; i<historial.length;i++){
+              if(i!=poin){
+                document.getElementById(`item_${i}`).classList.remove('item-content-active');
+              }
+          }
+          document.getElementById(`item_${poin}`).classList.add('item-content-active');
+      }else{
+        controlActive=false;
+            document.getElementById(`item_${poin}`).classList.remove('item-content-active');
+      }
+    
+  }
   function generateContent(){
-      console.log("historial",historial)
     document.getElementById("content-modal-historial").innerHTML="";
     for(let i=0; i<historial.length;i++){
-        console.log("hola")
         document.getElementById("content-modal-historial").innerHTML+=` <div class="item-list" onclick="selectItem(${i})" id="">
-        <div class="item-content item row" >
+        <div class="item-content item row" id="item_${i}">
             <div class="col-6 content-element1">
                 <span>${historial[i].nombre}</span>
             </div>
@@ -366,6 +388,7 @@ function ventanaModal(id, data) {
 
   function selectItem(id){
     poin=id;
+    activeItem()
   }
 
   function loadSimulation(){
