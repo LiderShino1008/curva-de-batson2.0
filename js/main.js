@@ -51,7 +51,7 @@ function calcularCP(config) {
     boolEm = validarCampoVacio('txt-em');
     boolIn = validarCampoVacio('txt-in');
     if (boolPi && boolAn && boolTn && boolTm && boolEm && boolIn || config.flag) {
-        if(flag){
+        if(!config.flag){
             indicadores = {
                 nombre:"",
                 date : "",
@@ -318,8 +318,7 @@ function ventanaModal(id, data) {
   }
 
   function saveSimulation(){
-      console.log("guardando")
-        indicadores.nombre=document.getElementById("name-simulation").value;
+        indicadores.nombre=document.getElementById("name-simulation").value+" "+"| 2020-"+parseFloat(indicadores.anios+2020);
         indicadores.date=generateDate()
         console.log(indicadores)
         historial.push(indicadores)
@@ -358,7 +357,7 @@ function ventanaModal(id, data) {
 
   function updateSimulation(id){
     indicadores_edit = {
-        nombre: document.getElementById(`name-sim-${id}`).value,
+        nombre: document.getElementById(`name-sim-${id}`).value+" "+"2020-"+2020+parseFloat(document.getElementById(`anios-p-${id}`).value),
         date : generateDate(),
         poblacionInicial: parseFloat(document.getElementById(`inicial-p-${id}`).value),
         anios: parseFloat(document.getElementById(`anios-p-${id}`).value),
