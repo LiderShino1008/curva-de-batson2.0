@@ -311,7 +311,7 @@ function ventanaModal(id, data) {
     document.getElementById("content-modal-guardar").innerHTML="";
     document.getElementById("content-modal-guardar").innerHTML+=`
     <input type="text" class="form-control" style="margin-top:2rem" placeholder="Nombre del escenario" id="name-simulation">
-    <button class="button__main button__green button-save-2" onclick="saveSimulation()">
+    <button class="button__main button__blue--dark button-save-2" onclick="saveSimulation()">
         Guardar
     </button>
     `;

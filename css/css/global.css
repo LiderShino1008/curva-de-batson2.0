@@ -489,6 +489,7 @@
     padding:  1rem ;
     border:0 solid #fff;
     outline: 0;
+    height: 20%;
   }
 
   .button-save-2{
@@ -535,4 +536,9 @@
    display: block;
    margin: auto;
    border-radius: 8px;
+  }
+
+  footer{
+    display: flex;
+    gap:0.5rem;
   }
