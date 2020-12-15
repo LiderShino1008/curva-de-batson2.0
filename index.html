@@ -106,7 +106,7 @@
                 </div>
             </div>
             <div class="section_2_2 card__graphic2__container">
-                <div class="card__ card__graphic card_graphic2">
+                <div class="card__ card__graphic card_graphic2" style="height: 100%;">
                     <div class="card__header">
                         <label>Crecimiento poblacional a través del tiempo</label>
                     </div>
@@ -118,11 +118,45 @@
            
         </section>
         <footer>
-            <p class="pt-4">Teoría de la simulación IS-910, Ingeniería en Sistemas UNAH<br>Elaborado por <a href="#">Gabriela Yaneth Cabrera</a>, <a href="#">Walter Rivera H</a>, <a href="#">Víctor Josué Bueso</a>.<br>© 2020.</p>
+           
+            <button class="button__main button__blue--dark button-save" onclick="ventanaModal('nuevaventana',{
+                title: 'Modelo de crecimiento poblacional',
+                width: 600,
+                height: 50,
+                content: '',
+                action:1});"
+                >Ayuda
+            </button>   
+            <button class="button__main button__blue button-save"  onclick="ventanaModal('historial',{
+                title: 'Historial',
+                width: 600,
+                height: 80,
+                content: '',
+                action:2});"
+                >Historial
+            </button>
+            <button class="button__main button__green button-save" onclick="ventanaModal('historial',{
+                title: 'Guardar Simulación',
+                width: 600,
+                height: 24,
+                content: '',
+                action:3});">
+                Guardar
+            </button>
+           <!--<select name="historial" id="historial">
+                
+            </select> ---> 
+            <center class="pt-4 mb-4">Teoría de la simulación IS-910, Ingeniería en Sistemas UNAH
+                <br>Elaborado por <a href="#">Gabriela Yaneth Cabrera</a>, <a href="#">Walter Rivera H</a>, <a href="#">Victor Josué Bueso</a>.
+                <br>© 2020.
+            </center>
         </footer>
    </div>
 
-
+  
+   
+   
+   </div>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
