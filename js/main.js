@@ -152,12 +152,17 @@ function validarCampoVacio(id){
         document.getElementById(id).classList.add('is-invalid');
         return false;
     } else {
-        //document.getElementById(id).classList.remove('is-invalid');
-        //document.getElementById(id).classList.add('is-valid');
+        document.getElementById(id).classList.remove('is-invalid');
+        document.getElementById(id).classList.add('is-valid');
         return true;
     }
 }
 
+/**
+ * Generador de ventanas modales.
+ * @param {string} id Identificador de ventana modal deseada
+ * @param {string} data Información a mostrar
+ */
 function ventanaModal(id, data) {
     data=data || {};                            // si no existe data, creamos un objeto vacío para evitar posteriores errores
     id="modal-"+id;        
